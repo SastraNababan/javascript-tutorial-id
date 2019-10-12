@@ -1,16 +1,22 @@
+# The Modern JavaScript Tutorial
 
-# The JavaScript Tutorial
-
-This repository hosts the content of the Modern JavaScript Tutorial, published at [https://javascript.info](https://javascript.info).
+This repository hosts the English content of the Modern JavaScript Tutorial, published at [https://javascript.info](https://javascript.info).
 
 ## Translations
 
-- Russian: [https://github.com/iliakan/javascript-tutorial-ru](https://github.com/iliakan/javascript-tutorial-ru).
-- Chinese: the ongoing translation at [https://github.com/iliakan/javascript-tutorial-cn](https://github.com/iliakan/javascript-tutorial-cn), go ahead and join if you know Chinese.
+We'd like to make the tutorial available in many languages. Please help us to translate.
 
-If you'd like to translate it into your language then fork the English tutorial and go ahead. I can publish the translation with your credits on a domain like fr.javascript.info.
+See <https://javascript.info/translate> for the details.
 
-Please use this repository to file issues and suggest PRs for the text.
+## Contributions
+
+We'd also like to collaborate on the tutorial with other people.
+
+Something's wrong? A topic is missing? Explain it to people, add as PR 👏
+
+**You can edit the text in any editor.** The tutorial uses enhanced "markdown" format, easy to grasp. And if you want to see how it looks on-site, there's a server to run the tutorial locally at <https://github.com/javascript-tutorial/server>.  
+
+The list of contributors is available at <https://javascript.info/about#contributors>.
 
 ## Structure
 
@@ -26,4 +32,8 @@ The type of the material is defined by the file inside the folder:
 
 Each of these files starts from the `# Main header`.
 
-Assets required for the material reside in the same folder.
+It's very easy to add something new.
+
+---
+♥  
+Ilya Kantor @iliakan

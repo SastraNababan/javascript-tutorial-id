@@ -4,8 +4,6 @@ A `switch` statement can replace multiple `if` checks.
 
 It gives a more descriptive way to compare a value with multiple variants.
 
-[cut]
-
 ## The syntax
 
 The `switch` has one or more `case` blocks and an optional default.
@@ -127,7 +125,7 @@ switch (a) {
     break;
 
 *!*
-  case 3:                    // (*) grouped two cases
+  case 3: // (*) grouped two cases
   case 5:
     alert('Wrong!');
     alert("Why don't you take a math class?");
@@ -150,7 +148,7 @@ Let's emphasize that the equality check is always strict. The values must be of 
 For example, let's consider the code:
 
 ```js run
-let arg = prompt("Enter a value?")
+let arg = prompt("Enter a value?");
 switch (arg) {
   case '0':
   case '1':
@@ -165,7 +163,7 @@ switch (arg) {
     alert( 'Never executes!' );
     break;
   default:
-    alert( 'An unknown value' )
+    alert( 'An unknown value' );
 }
 ```
 

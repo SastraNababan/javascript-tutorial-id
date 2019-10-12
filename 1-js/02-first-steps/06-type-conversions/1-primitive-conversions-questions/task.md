@@ -17,10 +17,11 @@ true + false
 "4" - 2
 "4px" - 2
 7 / 0
-"  -9\n" + 5
-"  -9\n" - 5
+"  -9  " + 5
+"  -9  " - 5
 null + 1
 undefined + 1
+" \t \n" - 2
 ```
 
 Think well, write down and then compare with the answer.

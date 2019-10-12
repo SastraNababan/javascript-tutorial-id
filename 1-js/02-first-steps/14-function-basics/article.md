@@ -6,8 +6,6 @@ For example, we need to show a nice-looking message when a visitor logs in, logs
 
 Functions are the main "building blocks" of the program. They allow the code to be called many times without repetition.
 
-[cut]
-
 We've already seen examples of built-in functions, like `alert(message)`, `prompt(message, default)` and `confirm(question)`. But we can create functions of our own as well.
 
 ## Function Declaration
@@ -22,9 +20,13 @@ function showMessage() {
 }
 ```
 
-The `function` keyword goes first, then goes the *name of the function*, then a list of *parameters* in the brackets (empty in the example above) and finally the code of the function, also named "the function body".
+The `function` keyword goes first, then goes the *name of the function*, then a list of *parameters* between the parentheses (comma-separated, empty in the example above) and finally the code of the function, also named "the function body", between curly braces.
 
-![](function_basics.png)
+```js
+function name(parameters) {
+  ...body...
+}
+```
 
 Our new function can be called by its name: `showMessage()`.
 
@@ -43,7 +45,7 @@ showMessage();
 
 The call `showMessage()` executes the code of the function. Here we will see the message two times.
 
-This example clearly demonstrates one of the main purposes of functions: to evade code duplication.
+This example clearly demonstrates one of the main purposes of functions: to avoid code duplication.
 
 If we ever need to change the message or the way it is shown, it's enough to modify the code in one place: the function which outputs it.
 
@@ -103,7 +105,7 @@ showMessage();
 alert( userName ); // *!*Bob*/!*, the value was modified by the function
 ```
 
-The outer variable is only used if there's no local one. So an occasional modification may happen if we forget `let`.
+The outer variable is only used if there's no local one.
 
 If a same-named variable is declared inside the function then it *shadows* the outer one. For instance, in the code below the function uses the local `userName`. The outer one is ignored:
 
@@ -119,7 +121,7 @@ function showMessage() {
   alert(message);
 }
 
-// the function will create and use it's own userName
+// the function will create and use its own userName
 showMessage();
 
 alert( userName ); // *!*John*/!*, unchanged, the function did not access the outer variable
@@ -130,7 +132,7 @@ Variables declared outside of any function, such as the outer `userName` in the 
 
 Global variables are visible from any function (unless shadowed by locals).
 
-Usually, a function declares all variables specific to its task, and global variables only store project-level data, so important that it really must be seen from anywhere. Modern code has few or no globals. Most variables reside in their functions.
+It's a good practice to minimize the use of global variables. Modern code has few or no globals. Most variables reside in their functions. Sometimes though, they can be useful to store project-level data.
 ```
 
 ## Parameters
@@ -206,6 +208,11 @@ function showMessage(from, text = anotherFunction()) {
 }
 ```
 
+```smart header="Evaluation of default parameters"
+In JavaScript, a default parameter is evaluated every time the function is called without the respective parameter.
+
+In the example above, `anotherFunction()` is called every time `showMessage()` is called without the `text` parameter.
+```
 
 ````smart header="Default parameters old-style"
 Old editions of JavaScript did not support default parameters. So there are alternative ways to support them, that you can find mostly in the old scripts.
@@ -265,7 +272,7 @@ function checkAge(age) {
 */!*
   } else {
 *!*
-    return confirm('Got a permission from the parents?');
+    return confirm('Do you have permission from your parents?');
 */!*
   }
 }
@@ -331,12 +338,24 @@ That doesn't work, because JavaScript assumes a semicolon after `return`. That'l
 return*!*;*/!*
  (some + long + expression + or + whatever * f(a) + f(b))
 ```
-So, it effectively becomes an empty return. We should put the value on the same line instead.
+
+So, it effectively becomes an empty return.
+
+If we want the returned expression to wrap across multiple lines, we should start it at the same line as `return`. Or at least put the opening parentheses there as follows:
+
+```js
+return (
+  some + long + expression
+  + or +
+  whatever * f(a) + f(b)
+  )
+```
+And it will work just as we expect it to.
 ````
 
 ## Naming a function [#function-naming]
 
-Functions are actions. So their name is usually a verb. It should briefly, but as accurately as possible describe what the function does. So that a person who reads the code gets the right clue.
+Functions are actions. So their name is usually a verb. It should be brief, as accurate as possible and describe what the function does, so that someone reading the code gets an indication of what the function does.
 
 It is a widespread practice to start a function with a verbal prefix which vaguely describes the action. There must be an agreement within the team on the meaning of the prefixes.
 
@@ -370,17 +389,17 @@ A few examples of breaking this rule:
 
 - `getAge` -- would be bad if it shows an `alert` with the age (should only get).
 - `createForm` -- would be bad if it modifies the document, adding a form to it (should only create it and return).
-- `checkPermission` -- would be bad if displays the `access granted/denied` message (should only perform the check and return the result).
+- `checkPermission` -- would be bad if it displays the `access granted/denied` message (should only perform the check and return the result).
 
-These examples assume common meanings of prefixes. What they mean for you is determined by you and your team. Maybe it's pretty normal for your code to behave differently. But you should have a firm understanding of what a prefix means, what a prefixed function can and cannot do. All same-prefixed functions should obey the rules. And the team should share the knowledge.
+These examples assume common meanings of prefixes. You and your team are free to agree on other meanings, but usually they're not much different. In any case, you should have a firm understanding of what a prefix means, what a prefixed function can and cannot do. All same-prefixed functions should obey the rules. And the team should share the knowledge.
 ```
 
 ```smart header="Ultrashort function names"
 Functions that are used *very often* sometimes have ultrashort names.
 
-For example, [jQuery](http://jquery.com) framework defines a function `$`, [LoDash](http://lodash.com/) library has it's core function named `_`.
+For example, the [jQuery](http://jquery.com) framework defines a function with `$`. The [Lodash](http://lodash.com/) library has its core function named `_`.
 
-These are exceptions. Generally functions names should be concise, but descriptive.
+These are exceptions. Generally functions names should be concise and descriptive.
 ```
 
 ## Functions == Comments
@@ -426,7 +445,7 @@ function isPrime(n) {
 }
 ```
 
-The second variant is easier to understand isn't it? Instead of the code piece we see a name of the action (`isPrime`). Sometimes people refer to such code as *self-describing*.
+The second variant is easier to understand, isn't it? Instead of the code piece we see a name of the action (`isPrime`). Sometimes people refer to such code as *self-describing*.
 
 So, functions can be created even if we don't intend to reuse them. They structure the code and make it readable.
 
@@ -442,7 +461,7 @@ function name(parameters, delimited, by, comma) {
 
 - Values passed to a function as parameters are copied to its local variables.
 - A function may access outer variables. But it works only from inside out. The code outside of the function doesn't see its local variables.
-- A function can return a value. If it doesn't then its result is `undefined`.
+- A function can return a value. If it doesn't, then its result is `undefined`.
 
 To make the code clean and easy to understand, it's recommended to use mainly local variables and parameters in the function, not outer variables.
 

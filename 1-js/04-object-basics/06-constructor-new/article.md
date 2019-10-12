@@ -4,8 +4,6 @@ The regular `{...}` syntax allows to create one object. But often we need to cre
 
 That can be done using constructor functions and the `"new"` operator.
 
-[cut]
-
 ## Constructor function
 
 Constructor functions technically are regular functions. There are two conventions though:
@@ -29,7 +27,7 @@ alert(user.name); // Jack
 alert(user.isAdmin); // false
 ```
 
-When a function is executed as `new User(...)`, it does the following steps:
+When a function is executed with `new`, it does the following steps:
 
 1. A new empty object is created and assigned to `this`.
 2. The function body executes. Usually it modifies `this`, adds new properties to it.
@@ -53,7 +51,7 @@ function User(name) {
 }
 ```
 
-So the result of `new User("Jack")` is the same object as:
+So `let user = new User("Jack")` gives the same result as:
 
 ```js
 let user = {
@@ -85,7 +83,11 @@ let user = new function() {
 The constructor can't be called again, because it is not saved anywhere, just created and called. So this trick aims to encapsulate the code that constructs the single object, without future reuse.
 ````
 
-## Dual-syntax constructors: new.target
+## Constructor mode test: new.target
+
+```smart header="Advanced stuff"
+The syntax from this section is rarely used, skip it unless you want to know everything.
+```
 
 Inside a function, we can check whether it was called with `new` or without it, using a special `new.target` property.
 
@@ -96,14 +98,20 @@ function User() {
   alert(new.target);
 }
 
-// without new:
+// without "new":
+*!*
 User(); // undefined
+*/!*
 
-// with new:
+// with "new":
+*!*
 new User(); // function User { ... }
+*/!*
 ```
 
-That can be used to allow both `new` and regular syntax to work the same:
+That can be used inside the function to know whether it was called with `new`, "in constructor mode", or without it, "in regular mode".
+
+We can also make both `new` and regular calls to do the same, like this:
 
 ```js run
 function User(name) {
@@ -118,7 +126,9 @@ let john = User("John"); // redirects call to new User
 alert(john.name); // John
 ```
 
-This approach is sometimes used in libraries to make the syntax more flexible. Probably not a good thing to use everywhere though, because omitting `new` makes it a bit less obvious what's going on. With `new` we all know that the new object is being created, that's a good thing.
+This approach is sometimes used in libraries to make the syntax more flexible. So that people may call the function with or without `new`, and it still works.
+
+Probably not a good thing to use everywhere though, because omitting `new` makes it a bit less obvious what's going on. With `new` we all know that the new object is being created.
 
 ## Return from constructors
 
@@ -126,7 +136,7 @@ Usually, constructors do not have a `return` statement. Their task is to write a
 
 But if there is a `return` statement, then the rule is simple:
 
-- If `return` is called with object, then it is returned instead of `this`.
+- If `return` is called with an object, then the object is returned instead of `this`.
 - If `return` is called with a primitive, it's ignored.
 
 In other words, `return` with an object returns that object, in all other cases `this` is returned.
@@ -138,10 +148,10 @@ function BigUser() {
 
   this.name = "John";
 
-  return { name: "Godzilla" };  // <-- returns an object
+  return { name: "Godzilla" };  // <-- returns this object
 }
 
-alert( new BigUser().name );  // Godzilla, got that object ^^
+alert( new BigUser().name );  // Godzilla, got that object
 ```
 
 And here's an example with an empty `return` (or we could place a primitive after it, doesn't matter):
@@ -151,10 +161,7 @@ function SmallUser() {
 
   this.name = "John";
 
-  return; // finishes the execution, returns this
-
-  // ...
-
+  return; // <-- returns this
 }
 
 alert( new SmallUser().name );  // John
@@ -205,6 +212,8 @@ john = {
 */
 ```
 
+To create complex objects, there's a more advanced syntax, [classes](info:classes), that we'll cover later.
+
 ## Summary
 
 - Constructor functions or, briefly, constructors, are regular functions, but there's a common agreement to name them with capital letter first.
@@ -217,5 +226,5 @@ JavaScript provides constructor functions for many built-in language objects: li
 ```smart header="Objects, we'll be back!"
 In this chapter we only cover the basics about objects and constructors. They are essential for learning more about data types and functions in the next chapters.
 
-After we learn that, in the chapter <info:object-oriented-programming> we return to objects and cover them in-depth, including inheritance and classes.
+After we learn that, we return to objects and cover them in-depth in the chapters <info:prototypes> and <info:classes>.
 ```

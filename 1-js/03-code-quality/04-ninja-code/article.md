@@ -1,14 +1,23 @@
 # Ninja code
 
-Programmer ninjas of the past used these tricks to make code maintainers cry. Code review gurus look for them in test tasks. Novice developers sometimes use them even better than programmer ninjas.
+
+```quote author="Confucius"
+Learning without thought is labor lost; thought without learning is perilous.
+```
+
+Programmer ninjas of the past used these tricks to sharpen the mind of code maintainers.
+
+Code review gurus look for them in test tasks.
+
+Novice developers sometimes use them even better than programmer ninjas.
 
 Read them carefully and find out who you are -- a ninja, a novice, or maybe a code reviewer?
 
-[cut]
 
 ```warn header="Irony detected"
-These are rules of writing bad code. Just... You know, some people miss the point.
+Many try to follow ninja paths. Few succeed.
 ```
+
 
 ## Brevity is the soul of wit
 
@@ -23,9 +32,9 @@ For instance, take a look at this ternary operator `'?'`:
 i = i ? i < 0 ? Math.max(0, len + i) : i : 0;
 ```
 
-Cool, right? If you write like that, the developer who comes across this line and tries to understand what is the value of `i` is going to have a merry time. Then come to you, seeking for an answer.
+Cool, right? If you write like that, a developer who comes across this line and tries to understand what is the value of `i` is going to have a merry time. Then come to you, seeking for an answer.
 
-Tell him that shorter is always better. Initiate him into the paths of ninja.
+Tell them that shorter is always better. Initiate them into the paths of ninja.
 
 ## One-letter variables
 
@@ -34,13 +43,13 @@ The Dao hides in wordlessness. Only the Dao is well begun and well
 completed.
 ```
 
-Another way to code faster (and much worse!) is to use single-letter variable names everywhere. Like `a`, `b` or `c`.
+Another way to code faster is to use single-letter variable names everywhere. Like `a`, `b` or `c`.
 
-A short variable disappears in the code like a real ninja in the forest. No one will be able to find it using "search" of the editor. And even if someone does, he won't be able to "decipher" what the name `a` or `b` means.
+A short variable disappears in the code like a real ninja in the forest. No one will be able to find it using "search" of the editor. And even if someone does, they won't be able to "decipher" what the name `a` or `b` means.
 
 ...But there's an exception. A real ninja will never use `i` as the counter in a `"for"` loop. Anywhere, but not here. Look around, there are many more exotic letters. For instance, `x` or `y`.
 
-An exotic variable as a loop counter is especially cool if the loop body takes 1-2 pages (make it longer if you can). Then if someone looks deep inside the loop, he won't be able to quickly figure out that the variable named `x` is the loop counter.
+An exotic variable as a loop counter is especially cool if the loop body takes 1-2 pages (make it longer if you can). Then if someone looks deep inside the loop, they won't be able to quickly figure out that the variable named `x` is the loop counter.
 
 ## Use abbreviations
 
@@ -72,17 +81,19 @@ While choosing a name try to use the most abstract word. Like `obj`, `data`, `va
 
 - **Name a variable by its type: `str`, `num`...**
 
-    Give them a try. A young ninja may wonder -- do such names make the code worse? Actually, yes!
+    Give them a try. A young initiate may wonder -- are such names really useful for a ninja? Indeed, they are!
 
-    From one hand, the variable name still means something. It says what's inside the variable: a string, a number or something else. But when an outsider tries to understand the code, he'll be surprised to see that there's actually no information at all!
+    Sure, the variable name still means something. It says what's inside the variable: a string, a number or something else. But when an outsider tries to understand the code, they'll be surprised to see that there's actually no information at all! And will ultimately fail to alter your well-thought code.
 
-    Indeed, the value type is easy to find out by debugging. But what's the meaning of the variable? Which string/number does it store? There's just no way to figure out without a good meditation!
+    The value type is easy to find out by debugging. But what's the meaning of the variable? Which string/number does it store?
+
+    There's just no way to figure out without a good meditation!
 
 - **...But what if there are no more such names?** Just add a number: `data1, item2, elem5`...
 
 ## Attention test
 
-Only a truly attentive programmer should be able to understand the code. But how to check that?
+Only a truly attentive programmer should be able to understand your code. But how to check that?
 
 **One of the ways -- use similar variable names, like `date` and `data`.**
 
@@ -126,7 +137,7 @@ Instead, reuse existing names. Just write new values into them.
 
 In a function try to use only variables passed as parameters.
 
-That would make it really hard to identify what's exactly in the variable *now*. And also where it comes from. A person with weak intuition would have to analyze the code line-by-line and track the changes through every code branch.
+That would make it really hard to identify what's exactly in the variable *now*. And also where it comes from. The purpose is to develop the intuition and memory of a person reading the code. A person with weak intuition would have to analyze the code line-by-line and track the changes through every code branch.
 
 **An advanced variant of the approach is to covertly (!) replace the value with something alike in the middle of a loop or a function.**
 
@@ -142,9 +153,9 @@ function ninjaFunction(elem) {
 }
 ```
 
-A fellow programmer who wants to work with `elem` in the second half of the function will be surprised... Only during the debugging, after examining the code he will find out that he's working with a clone!
+A fellow programmer who wants to work with `elem` in the second half of the function will be surprised... Only during the debugging, after examining the code they will find out that they're working with a clone!
 
-Deadly effective even against an experienced ninja. Seen in code regularly.
+Seen in code regularly. Deadly effective even against an experienced ninja.
 
 ## Underscores for fun
 
@@ -158,7 +169,8 @@ A smart ninja puts underscores at one spot of code and evades them at other plac
 
 Let everyone see how magnificent your entities are! Names like `superElement`, `megaFrame` and `niceItem` will definitely enlighten a reader.
 
-Indeed, from one hand, something is written: `super..`, `mega..`, `nice..` But from the other hand -- that brings no details. A reader may decide to look for a hidden meaning and meditate for an hour or two.
+Indeed, from one hand, something is written: `super..`, `mega..`, `nice..` But from the other hand -- that brings no details. A reader may decide to look for a hidden meaning and meditate for an hour or two of their paid working time.
+
 
 ## Overlap outer variables
 
@@ -167,7 +179,7 @@ When in the light, can't see anything in the darkness.<br>
 When in the darkness, can see everything in the light.
 ```
 
-Use same names for variables inside and outside a function. As simple. No efforts required.
+Use same names for variables inside and outside a function. As simple. No efforts to invent new names.
 
 ```js
 let *!*user*/!* = authenticateUser();
@@ -184,7 +196,7 @@ function render() {
 
 A programmer who jumps inside the `render` will probably fail to notice that there's a local `user` shadowing the outer one.
 
-Then he'll try to work with `user` assuming that it's the external variable, the result of `authenticateUser()`... The trap is sprung! Hello, debugger...
+Then they'll try to work with `user` assuming that it's the external variable, the result of `authenticateUser()`... The trap is sprung! Hello, debugger...
 
 
 ## Side-effects everywhere!
@@ -193,7 +205,7 @@ There are functions that look like they don't change anything. Like `isReady()`,
 
 **A really beautiful trick is to add a "useful" action to them, besides the main task.**
 
-The expression of dazed surprise on the face of your colleague when he sees a function named `is..`, `check..` or `find...` changing something -- will definitely broaden your boundaries of reason.
+An expression of dazed surprise on the face of your colleague when they see a function named `is..`, `check..` or `find...` changing something -- will definitely broaden your boundaries of reason.
 
 **Another way to surprise is to return a non-standard result.**
 
@@ -217,7 +229,7 @@ Additional actions should not be obvious from the function name. A true ninja co
 
 **Joining several actions into one protects your code from reuse.**
 
-Imagine, another developer wants only to check the email, and not output any message. Your function  `validateEmail(email)` that does both will not suit him. So he won't break your meditation by asking anything about it.
+Imagine, another developer wants only to check the email, and not output any message. Your function  `validateEmail(email)` that does both will not suit them. So they won't break your meditation by asking anything about it.
 
 ## Summary
 

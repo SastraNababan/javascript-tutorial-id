@@ -22,9 +22,9 @@ work = spy(work);
 work(1, 2); // 3
 work(4, 5); // 9
 
-for(let args of work.calls) {
+for (let args of work.calls) {
   alert( 'call:' + args.join() ); // "call:1,2", "call:4,5"
 }
 ```
 
-P.S. That decorator is sometimes useful for unit-testing, it's advanced form is `sinon.spy` in [Sinon.JS](http://sinonjs.org/) library.
+P.S. That decorator is sometimes useful for unit-testing. Its advanced form is `sinon.spy` in [Sinon.JS](http://sinonjs.org/) library.

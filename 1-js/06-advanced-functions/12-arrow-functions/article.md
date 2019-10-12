@@ -2,11 +2,9 @@
 
 Let's revisit arrow functions.
 
-[cut]
+Arrow functions are not just a "shorthand" for writing small stuff. They have some very specific and useful features.
 
-Arrow functions are not just a "shorthand" for writing small stuff.
-
-JavaScript is full of situations where we need to write a small function, that's executed somewhere else.
+JavaScript is full of situations where we need to write a small function that's executed somewhere else.
 
 For instance:
 
@@ -16,7 +14,7 @@ For instance:
 
 It's in the very spirit of JavaScript to create a function and pass it somewhere.
 
-And in such functions we usually don't want to leave the current context.
+And in such functions we usually don't want to leave the current context. That's where arrow functions come in handy.
 
 ## Arrow functions have no "this"
 
@@ -125,4 +123,4 @@ Arrow functions:
 - Can't be called with `new`.
 - (They also don't have `super`, but we didn't study it. Will be in the chapter <info:class-inheritance>).
 
-That's because they are meant for short pieces of code that does not have their own "context", but rather works in the current one. And they really shine in that use case.
+That's because they are meant for short pieces of code that do not have their own "context", but rather works in the current one. And they really shine in that use case.

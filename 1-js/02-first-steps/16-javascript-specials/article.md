@@ -2,8 +2,6 @@
 
 This chapter briefly recaps the features of JavaScript that we've learned by now, paying special attention to subtle moments.
 
-[cut]
-
 ## Code structure
 
 Statements are delimited with a semicolon:
@@ -55,7 +53,7 @@ To fully enable all features of modern JavaScript, we should start scripts with 
 ...
 ```
 
-The directive must be at the top of a script or at the beginning of a function.
+The directive must be at the top of a script or at the beginning of a function body.
 
 Without `"use strict"`, everything still works, but some features behave in the old-fashion, "compatible" way. We'd generally prefer the modern behavior.
 
@@ -90,7 +88,7 @@ There are 7 data types:
 - `boolean` for logical values: `true/false`,
 - `null` -- a type with a single value `null`, meaning "empty" or "does not exist",
 - `undefined` -- a type with a single value `undefined`, meaning "not assigned",
-- `object` and `symbol` -- for complex data structures and unique identifiers, we didn't learn them yet.
+- `object` and `symbol` -- for complex data structures and unique identifiers, we haven't learnt them yet.
 
 The `typeof` operator returns the type for a value, with two exceptions:
 ```js
@@ -104,8 +102,8 @@ More in: <info:variables> and <info:types>.
 
 We're using a browser as a working environment, so basic UI functions will be:
 
-[`prompt(question[, default])`](mdn:api/Window/prompt)
-: Ask a `question`, and return either what the visitor entered or `null` if he pressed "cancel".
+[`prompt(question, [default])`](mdn:api/Window/prompt)
+: Ask a `question`, and return either what the visitor entered or `null` if they clicked "cancel".
 
 [`confirm(question)`](mdn:api/Window/confirm)
 : Ask a `question` and suggest to choose between Ok and Cancel. The choice is returned as `true/false`.
@@ -113,7 +111,7 @@ We're using a browser as a working environment, so basic UI functions will be:
 [`alert(message)`](mdn:api/Window/alert)
 : Output a `message`.
 
-All these functions are *modal*, they pause the code execution and prevent the visitor from interacting with the page until he answers.
+All these functions are *modal*, they pause the code execution and prevent the visitor from interacting with the page until they answer.
 
 For instance:
 
@@ -134,7 +132,7 @@ JavaScript supports the following operators:
 Arithmetical
 : Regular: `* + - /`, also `%` for the remainder and `**` for power of a number.
 
-    Binary plus `+` concatenates strings. And if any of the operands is a string, the other one is converted to string too:
+    The binary plus `+` concatenates strings. And if any of the operands is a string, the other one is converted to string too:
 
     ```js run
     alert( '1' + 2 ); // '12', string
@@ -145,13 +143,13 @@ Assignments
 : There is a simple assignment: `a = b` and combined ones like `a *= 2`.
 
 Bitwise
-: Bitwise operators work with integers on bit-level: see the [docs](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) when they are needed.
+: Bitwise operators work with 32-bit integers at the lowest, bit-level: see the [docs](mdn:/JavaScript/Reference/Operators/Bitwise_Operators) when they are needed.
 
-Ternary
-: The only operator with three parameters: `cond ? resultA : result B`. If `cond` is truthy, returns `resultA`, otherwise `resultB`.
+Conditional
+: The only operator with three parameters: `cond ? resultA : resultB`. If `cond` is truthy, returns `resultA`, otherwise `resultB`.
 
 Logical operators
-: Logical AND `&&` and OR `||` perform short-circuit evaluation and then return the value where it stopped.
+: Logical AND `&&` and OR `||` perform short-circuit evaluation and then return the value where it stopped (not necessary `true`/`false`). Logical NOT `!` converts the operand to boolean type and returns the inverse value.
 
 Comparisons
 : Equality check `==` for values of different types converts them to a number (except `null` and `undefined` that equal each other and nothing else), so these are equal:
@@ -163,13 +161,13 @@ Comparisons
 
     Other comparisons convert to a number as well.
 
-    The strict equality operator `===` doesn't do the conversion: different types always mean different values for it, so:
+    The strict equality operator `===` doesn't do the conversion: different types always mean different values for it.
 
     Values `null` and `undefined` are special: they equal `==` each other and don't equal anything else.
 
     Greater/less comparisons compare strings character-by-character, other types are converted to a number.
 
-Logical operators
+Other operators
 : There are few others, like a comma operator.
 
 More in: <info:operators>, <info:comparison>, <info:logical-operators>.
@@ -204,7 +202,7 @@ Later we'll study more types of loops to deal with objects.
 
 ## The "switch" construct
 
-The "switch" construct can replace multiple `if` checks. It uses `===` for comparisons.
+The "switch" construct can replace multiple `if` checks. It uses `===` (strict equality) for comparisons.
 
 For instance:
 
@@ -247,10 +245,8 @@ We covered three ways to create a function in JavaScript:
       let result = a + b;
 
       return result;
-    }
+    };
     ```
-
-    Function expression can have a name, like `sum = function name(a, b)`, but that `name` is only visible inside that function.
 
 3. Arrow functions:
 
@@ -276,13 +272,7 @@ We covered three ways to create a function in JavaScript:
 - Parameters can have default values: `function sum(a = 1, b = 2) {...}`.
 - Functions always return something. If there's no `return` statement, then the result is `undefined`.
 
-
-| Function Declaration | Function Expression |
-|----------------------|---------------------|
-| visible in the whole code block | created when the execution reaches it |
-|   - | can have a name, visible only inside the function |
-
-More: see <info:function-basics>, <info:function-expressions-arrows>.
+Details: see <info:function-basics>, <info:function-expressions-arrows>.
 
 ## More to come
 
